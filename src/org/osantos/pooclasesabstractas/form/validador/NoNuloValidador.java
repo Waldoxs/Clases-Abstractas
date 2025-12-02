@@ -2,7 +2,7 @@ package org.osantos.pooclasesabstractas.form.validador;
 
 public class NoNuloValidador extends Validador {
 
-    protected String mensaje = "El campo no puede ser nulo";
+    protected String mensaje = "El campo %s no puede ser nulo";
 
 
     @Override

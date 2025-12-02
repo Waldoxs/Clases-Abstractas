@@ -1,5 +1,6 @@
 package org.osantos.pooclasesabstractas.form.elementos;
 
+import org.osantos.pooclasesabstractas.form.validador.LargoValidador;
 import org.osantos.pooclasesabstractas.form.validador.Validador;
 
 import java.util.ArrayList;
@@ -32,10 +33,6 @@ abstract public class ElementoForm {
         this.nombre = nombre;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
     public void setValor(String valor) {
         this.valor = valor;
     }
@@ -43,9 +40,13 @@ abstract public class ElementoForm {
     public boolean esValido(){
         for(Validador v: validadores){
             if(!v.esValido(valor)){
-                this.errores.add(v.getMensaje());
-            }
+                if(v instanceof LargoValidador){
+                    this.errores.add(((LargoValidador) v).getMensajeFormateado(this.nombre));
+                }else {
+                    this.errores.add(String.format(v.getMensaje(),this.nombre));
+                }
 
+            }
         }
         return this.errores.isEmpty();
     }

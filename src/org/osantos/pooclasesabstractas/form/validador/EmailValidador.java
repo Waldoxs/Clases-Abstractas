@@ -1,7 +1,7 @@
 package org.osantos.pooclasesabstractas.form.validador;
 
 public class EmailValidador extends Validador {
-    protected String mensaje = "El formato de email es invalido";
+    protected String mensaje = "El campo %s tiene un formato de correo invalido";
     private final static String EMAIL_PATRON = "^(.+)@(.+)$";
 
     @Override
